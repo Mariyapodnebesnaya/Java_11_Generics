@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Ticket implements Comparable<Ticket> {
     private int id;
     private int price;
@@ -55,9 +53,9 @@ public class Ticket implements Comparable<Ticket> {
 
     @Override
     public int compareTo(Ticket o) {
-        if (price<o.getPrice()) {
+        if (price < o.getPrice()) {
             return -1;
-        }else if (price>getPrice()) {
+        } else if (price > getPrice()) {
             return 1;
         } else {
             return 0;
