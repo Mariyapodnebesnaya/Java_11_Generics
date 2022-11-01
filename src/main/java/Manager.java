@@ -2,15 +2,19 @@ import java.util.Arrays;
 
 public class Manager {
     protected Repository repo;
+
     public Manager(Repository repo) {
         this.repo = repo;
     }
+
     public void add(Ticket ticket) {
         repo.add(ticket);
     }
+
     public Ticket[] findAll() {
         return repo.findAll();
     }
+
     public Ticket[] searchBy(String from, String to) {
         Ticket[] result = new Ticket[0];
         for (Ticket ticket : findAll()) {
@@ -23,7 +27,19 @@ public class Manager {
                 result = tmp;
             }
         }
+        return result;
+    }
+
+    public Ticket[] searchByWithPriceComparator(String from, String to) {
+        Ticket[] result = searchBy(from, to);
         Arrays.sort(result);
+        return result;
+    }
+
+    public Ticket[] searchByWithTimeComparator(String from, String to) {
+        Ticket[] result = searchBy(from, to);
+        TicketTimeComparator comparator = new TicketTimeComparator();
+        Arrays.sort(result, comparator);
         return result;
     }
 
